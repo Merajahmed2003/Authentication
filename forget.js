@@ -1,18 +1,17 @@
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { auth } from "./config.js";
 
 const form = document.querySelector("form");
-const emaill = document.querySelector("input");
+const emaill = document.querySelector("#email");
 
-const newEmail = document.querySelector("input");
-
-emaill.value = newEmail;
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  console.log("Working");
 
   sendPasswordResetEmail(auth, emaill.value)
     .then(() => {
-      console.log("email sent");
+      console.log("Email send");
+
       Swal.fire({
         position: "top-center",
         icon: "success",
